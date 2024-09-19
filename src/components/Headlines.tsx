@@ -1,8 +1,11 @@
+"use client"
 import React from 'react'
 import Marquee from "react-fast-marquee"
 import Link from 'next/link'
+import { useNews } from '@/context/NewsProvider'
 
 const Headlines = () => {
+    const {allNews,isLoading,isError} = useNews()
     const headlineNews = [
         {
             title: "ne plus new mobile"
@@ -39,9 +42,9 @@ const Headlines = () => {
             <div className='flex md:w-[calc(100%-170px)] w-full'>
                 <div className='flex w-full justify-start items-center '>
                     <Marquee>
-                        {headlineNews.map((h, i) => (
+                        {allNews.map((h:any, i:any) => (
                             <Link href={"#"} key={i} className='py-1 block font-semibold hover:text-red-500 pr-12 text-sm'>
-                                {h.title}
+                               {h.title}
                             </Link>
                         ))}
                     </Marquee>
