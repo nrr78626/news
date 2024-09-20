@@ -7,7 +7,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useNews } from '@/context/NewsProvider';
 
 const LatestNews = () => {
-  const {allNews,isLoading} = useNews()
+  const { allNews, isLoading } = useNews()
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -42,14 +42,11 @@ const LatestNews = () => {
     </div>
   }
 
-  if(isLoading){
-    return <div className='flex h-screen w-screen justify-center items-center'>Please wait</div>
-  }
   return (
     <div className='w-full flex flex-col-reverse gap-3 pr-8 lg:pr-2 '>
       <Carousel autoPlay={true} arrows={false} renderButtonGroupOutside={true} responsive={responsive} infinite={true} transitionDuration={500} customButtonGroup={<ButtonGroup />}>
         {
-          allNews.map((e:any, i:any) => <SampleNewsCard key={i} element={e} />)
+          allNews.map((item: any, i: any) => <SampleNewsCard key={i} type={"latestnews"} item={item} />)
         }
       </Carousel>
     </div>
